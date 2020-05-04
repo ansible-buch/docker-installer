@@ -1,0 +1,77 @@
+---
+- name: Update apt cache
+  apt: 
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install some prereqs
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg2
+
+- name: Import Dockers official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    
+- name: Add docker apt repo
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/debian \
+           {{ansible_lsb.codename}} stable"
+    filename: docker-ce
+    state: present
+
+- name: Install docker-ce
+  apt:
+    name: docker-ce
+
+
+- name: Upload daemon.json
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+  notify:
+    - restart docker
+
+
+- name: Install docker-compose
+  get_url:
+    url: "https://github.com\
+          /docker/compose/releases/download/{{docker_compose_version}}\
+          /docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+
+- name: Install docker-compose bash completion
+  get_url:
+    url: "https://raw.githubusercontent.com\
+          /docker/compose/{{docker_compose_version}}\
+          /contrib/completion/bash/docker-compose"
+    dest: /etc/bash_completion.d/docker-compose
+
+
+- name: Install ctop
+  get_url:
+    url: "https://github.com\
+          /bcicen/ctop/releases/download/v{{docker_ctop_version}}\
+          /ctop-{{docker_ctop_version}}-linux-amd64"
+    dest: /usr/local/bin/ctop
+    mode: 0755
+
+- name: Add ctop alias
+  lineinfile:
+    path: .bashrc
+    line: alias ctop="ctop -scale-cpu"
+
+
+- name: Install reg
+  get_url:
+    url: "https://github.com\
+          /genuinetools/reg/releases/download/v{{docker_reg_version}}\
+          /reg-linux-amd64"
+    dest: /usr/local/bin/reg
+    mode: 0755
+
+
+- meta: flush_handlers
