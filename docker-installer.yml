@@ -1,0 +1,19 @@
+#!/usr/bin/env -S ANSIBLE_STDOUT_CALLBACK=yaml ansible-playbook -i localhost,
+---
+- hosts: localhost
+  connection: local
+  vars:
+    ansible_python_interpreter: auto_silent
+
+  pre_tasks:
+    - setup:
+
+    - block:
+      - debug:
+          msg: "This program requires root privileges"
+      - meta: end_play
+      when: ansible_user_uid != 0
+
+
+  roles:
+    - docker
