@@ -34,6 +34,12 @@
   notify:
     - restart docker
 
+- name: Add user to docker group
+  user:
+    name: '{{docker_user}}'
+    groups: docker
+    append: yes
+  when: docker_user is defined
 
 - name: Install docker-compose
   get_url:
