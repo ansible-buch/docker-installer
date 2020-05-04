@@ -1,0 +1,27 @@
+---
+- name: Update apt cache
+  apt: 
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install some prereqs
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg2
+
+- name: Import Dockers official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    
+- name: Add docker apt repo
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/debian \
+           {{ansible_lsb.codename}} stable"
+    filename: docker-ce
+    state: present
+
+- name: Install docker-ce
+  apt:
+    name: docker-ce
