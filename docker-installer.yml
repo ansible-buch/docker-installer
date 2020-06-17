@@ -7,14 +7,14 @@
     ansible_python_interpreter: auto_silent
 
   pre_tasks:
-    - setup:
+    - set_fact:
+        eff_uid_number: "{{ lookup('pipe', 'id -u') }}"
 
     - block:
       - debug:
           msg: "This program requires root privileges"
       - meta: end_play
-      when: ansible_user_uid != 0
-
+      when: eff_uid_number|int != 0
 
   roles:
     - docker
