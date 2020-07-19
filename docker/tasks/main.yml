@@ -26,6 +26,10 @@
   when: docker_user is defined
 
 
+- name: Install bash-completion package
+  package:
+    name: bash-completion
+  
 - name: Install additional tools
   include_tasks: tools.yml
   
