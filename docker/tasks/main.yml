@@ -29,6 +29,7 @@
           - python3-pip
           - python3-setuptools
     - pip:
+        executable: pip3
         name:
           - docker
           - docker-compose
