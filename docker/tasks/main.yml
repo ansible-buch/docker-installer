@@ -32,7 +32,7 @@
         name:
           - docker
           - docker-compose
-  when: docker_sdk
+  when: docker_sdk | bool
 
 
 - meta: flush_handlers
