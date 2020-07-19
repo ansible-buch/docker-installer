@@ -21,4 +21,18 @@
   include_tasks: tools.yml
   
 
+- name: Install packages for Ansible/Docker-interaction
+  block:
+    - apt:
+        name:
+          - python3-docker
+          - python3-pip
+          - python3-setuptools
+    - pip:
+        name:
+          - docker
+          - docker-compose
+  when: docker_sdk
+
+
 - meta: flush_handlers
