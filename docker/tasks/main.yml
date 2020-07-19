@@ -23,7 +23,8 @@
 
 - name: Install packages for Ansible/Docker-interaction
   block:
-    - apt:
+    - name: 123
+      apt:
         name:
           - python3-pip
           #- python3-setuptools
