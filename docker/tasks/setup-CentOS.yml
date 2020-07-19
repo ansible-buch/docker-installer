@@ -12,5 +12,8 @@
     name: "https://download.docker.com/linux/centos/7/\
            x86_64/stable/Packages/{{containerd_rpm}}"
 
-    
+- name: Install docker-ce
+  apt:
+    name: docker-ce
+
 - meta: end_play
