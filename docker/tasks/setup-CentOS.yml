@@ -13,7 +13,7 @@
            x86_64/stable/Packages/{{containerd_rpm}}"
 
 - name: Install docker-ce
-  apt:
+  yum:
     name: docker-ce
 
 - meta: end_play
