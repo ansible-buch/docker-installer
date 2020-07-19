@@ -27,7 +27,8 @@
         name:
           - python3-pip
           - python3-setuptools
-    - pip: Install required Python modules
+    - name: Install required Python modules
+      pip:
         name:
           - docker
           - docker-compose
