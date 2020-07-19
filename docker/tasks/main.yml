@@ -18,8 +18,6 @@
 - meta: flush_handlers
 
 
-- meta: end_play
-  
 - name: Add user to docker group
   user:
     name: '{{docker_user}}'
