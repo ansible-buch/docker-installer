@@ -32,7 +32,7 @@
 
 - block:
     - name: Install requirements for pip usage
-      apt:
+      package:
         name:
           - python3-pip
           - python3-setuptools
