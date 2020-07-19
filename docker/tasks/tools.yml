@@ -1,0 +1,38 @@
+---
+- name: Install docker-compose
+  get_url:
+    url: "https://github.com\
+          /docker/compose/releases/download/{{docker_compose_version}}\
+          /docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+
+- name: Install docker-compose bash completion
+  get_url:
+    url: "https://raw.githubusercontent.com\
+          /docker/compose/{{docker_compose_version}}\
+          /contrib/completion/bash/docker-compose"
+    dest: /etc/bash_completion.d/docker-compose
+
+
+- name: Install ctop
+  get_url:
+    url: "https://github.com\
+          /bcicen/ctop/releases/download/v{{docker_ctop_version}}\
+          /ctop-{{docker_ctop_version}}-linux-amd64"
+    dest: /usr/local/bin/ctop
+    mode: 0755
+
+- name: Add ctop alias to .bashrc
+  lineinfile:
+    path: ~{{ docker_user | default('root') }}/.bashrc
+    line: alias ctop="ctop -scale-cpu"
+
+
+- name: Install reg
+  get_url:
+    url: "https://github.com\
+          /genuinetools/reg/releases/download/v{{docker_reg_version}}\
+          /reg-linux-amd64"
+    dest: /usr/local/bin/reg
+    mode: 0755
