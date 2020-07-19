@@ -1,8 +1,16 @@
 ---
+- set_fact:
+    containerd_rpm: containerd.io-1.2.13-3.1.el7.x86_64.rpm      
+
 - name: Add docker yum repo
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
 
+- name: Install containerd.io
+  yum:
+    name: "https://download.docker.com/linux/centos/7/\
+           x86_64/stable/Packages/{{containerd_rpm}}"
 
+    
 - meta: end_play
