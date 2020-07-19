@@ -4,7 +4,7 @@
   connection: local
   force_handlers: true
   vars:
-    ansible_python_interpreter: auto_silent
+    ansible_python_interpreter: /usr/bin/python3
 
   pre_tasks:
     - set_fact:
