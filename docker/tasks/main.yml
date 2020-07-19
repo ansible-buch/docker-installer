@@ -36,5 +36,3 @@
           - docker
           - docker-compose
   when: docker_sdk | bool
-
-
