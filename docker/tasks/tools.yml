@@ -26,6 +26,7 @@
 - name: Add ctop alias to .bashrc
   lineinfile:
     path: ~{{ docker_user | default('root') }}/.bashrc
+    create: yes
     line: alias ctop="ctop -scale-cpu"
 
 
