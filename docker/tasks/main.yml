@@ -21,15 +21,13 @@
   include_tasks: tools.yml
   
 
-- name: Install packages for Ansible/Docker-interaction
-  block:
-    - name: task1
+- block:
+    - name: Install requirement for pip usage
       apt:
         name:
           - python3-pip
           - python3-setuptools
-    - pip:
-        executable: pip3
+    - pip: Install required Python modules
         name:
           - docker
           - docker-compose
