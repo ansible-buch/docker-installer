@@ -1,4 +1,4 @@
 ---
 - name: Install docker-ce
   zypper:
-    name: docker-ce
+    name: docker
