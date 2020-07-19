@@ -1,4 +1,4 @@
 ---
 - name: Install docker-ce
-  apt:
+  zypper:
     name: docker-ce
