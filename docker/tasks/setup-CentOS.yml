@@ -15,5 +15,3 @@
 - name: Install docker-ce
   yum:
     name: docker-ce
-
-- meta: end_play

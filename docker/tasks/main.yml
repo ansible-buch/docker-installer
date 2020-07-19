@@ -2,6 +2,12 @@
 - name: System-specific installation of docker-ce
   include_tasks: "setup-{{ansible_distribution |replace(' ', '_')}}.yml"
 
+- name: Start and enable docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
 - name: Upload daemon.json
   copy:
     src: daemon.json
@@ -12,6 +18,8 @@
 - meta: flush_handlers
 
 
+- meta: end_play
+  
 - name: Add user to docker group
   user:
     name: '{{docker_user}}'
