@@ -19,3 +19,17 @@
 - name: Install docker-ce
   yum:
     name: docker-ce
+
+- name: Check firewalld service status
+  shell: systemctl is-active firewalld.service || true
+  register: firewalld_status_cmd
+  changed_when: false
+
+- name: Activate masquerading
+  firewalld:
+    masquerade: yes
+    state: enabled
+    zone: public
+    permanent: yes
+    immediate: yes
+  when: firewalld_status_cmd.stdout == "active"
