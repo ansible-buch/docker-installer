@@ -9,6 +9,9 @@
   notify:
     - restart docker
 
+- meta: flush_handlers
+
+
 - name: Add user to docker group
   user:
     name: '{{docker_user}}'
@@ -35,4 +38,3 @@
   when: docker_sdk | bool
 
 
-- meta: flush_handlers
