@@ -22,7 +22,7 @@
   
 
 - block:
-    - name: Install requirement for pip usage
+    - name: Install requirements for pip usage
       apt:
         name:
           - python3-pip
