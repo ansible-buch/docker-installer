@@ -1,4 +1,8 @@
 ---
+- assert:
+    that:
+      - ansible_distribution_major_version is version('8', '==')
+
 - set_fact:
     containerd_rpm: containerd.io-1.2.13-3.1.el7.x86_64.rpm      
 
