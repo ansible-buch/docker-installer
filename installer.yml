@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ANSIBLE_STDOUT_CALLBACK=yaml ansible-playbook -i localhost,
+#!/usr/bin/ansible-playbook --inventory=localhost,
 ---
 - hosts: localhost
   connection: local
