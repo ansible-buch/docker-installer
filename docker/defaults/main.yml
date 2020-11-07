@@ -1,6 +1,6 @@
 ---
-docker_compose_version: 1.26.2
-docker_ctop_version: 0.7.3
+docker_compose_version: 1.27.4
+docker_ctop_version: 0.7.5
 docker_reg_version: 0.16.1
 
-docker_sdk: false
+docker_sdk: true
