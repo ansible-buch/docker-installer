@@ -6,6 +6,9 @@
           /docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
     mode: 0755
+    force: yes
+  when: not (docker_sdk | bool)
+  # (in this case we get docker-compose anyway.)
 
 - name: Install docker-compose bash completion
   get_url:
@@ -13,6 +16,7 @@
           /docker/compose/{{docker_compose_version}}\
           /contrib/completion/bash/docker-compose"
     dest: /etc/bash_completion.d/docker-compose
+    force: yes
 
 
 - name: Install ctop
@@ -22,6 +26,7 @@
           /ctop-{{docker_ctop_version}}-linux-amd64"
     dest: /usr/local/bin/ctop
     mode: 0755
+    force: yes
 
 - name: Add ctop alias to .bashrc
   lineinfile:
@@ -37,3 +42,4 @@
           /reg-linux-amd64"
     dest: /usr/local/bin/reg
     mode: 0755
+    force: yes
