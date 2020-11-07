@@ -16,5 +16,6 @@
       - meta: end_play
       when: eff_uid_number|int != 0
 
+
   roles:
-    - docker
+    - role: docker
