@@ -11,7 +11,7 @@ Docker CE) on various Linux Platforms. It has been tested on:
 
 ## Installation prerequisites:
 
-You will need `ansible` and (of course) `git`.
+You will need `ansible` (see [https://github.com/ansible-buch/install-ansible](https://github.com/ansible-buch/install-ansible) and (of course) `git`.
 
 
 ## Installation:
