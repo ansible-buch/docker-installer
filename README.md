@@ -20,6 +20,7 @@ Clone this repository and ch'dir into project folder:
 
 ```
 git clone https://github.com/ansible-buch/docker-installer.git
+cd docker-installer
 ```
 
 Then start the `installer.yml` with root permissions; e.g.:
