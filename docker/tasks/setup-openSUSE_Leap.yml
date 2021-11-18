@@ -1,4 +1,4 @@
 ---
-- name: Install docker-ce
+- name: Install docker-ce (from openSUSE repo)
   zypper:
     name: docker
