@@ -1,0 +1,28 @@
+---
+- assert:
+    that:
+      - ansible_distribution_major_version is version('8', '==')
+
+- name: Add docker yum repo
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install docker-ce
+  yum:
+    name: docker-ce
+
+
+- name: Check firewalld service status
+  shell: systemctl is-active firewalld.service || true
+  register: firewalld_status_cmd
+  changed_when: false
+
+- name: Activate masquerading
+  firewalld:
+    masquerade: yes
+    state: enabled
+    zone: public
+    permanent: yes
+    immediate: yes
+  when: firewalld_status_cmd.stdout == "active"
