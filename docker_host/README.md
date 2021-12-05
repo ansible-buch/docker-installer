@@ -22,10 +22,16 @@ Available variables are listed below, along with default values:
 
 This role installs Docker Engine (formerly known as Docker CE)
 from the repos hosted at docker.com. Only the SUSE package is taken
-from the SUSE repository.
+from the SUSE repository, because docker.com doesn't offer one.
+
+The installation comes with a `daemon.json` where two features are enabled:
+- json logging limited to 3 times 50 MB
+- live restore (allows daemon restarts without killing all containers)
 
 If you specify an account with `docker_user`, it will be put into the
-`docker` group.
+`docker` group, and therefore gets the permission to use Docker.
 
-Additionally, the tools docker-compose, ctop and reg will be installed
-directly from GitHub.
+Additionally, the following tools will be installed directly from GitHub:
+- docker-compose
+- ctop
+- reg
