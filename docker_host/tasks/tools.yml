@@ -28,7 +28,7 @@
 - name: Install ctop
   get_url:
     url: "https://github.com\
-          /bcicen/ctop/releases/download/{{docker_ctop_version}}\
+          /bcicen/ctop/releases/download/v{{docker_ctop_version}}\
           /ctop-{{docker_ctop_version}}-linux-amd64"
     dest: /usr/local/bin/ctop
     mode: 0755
