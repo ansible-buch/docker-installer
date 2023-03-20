@@ -4,7 +4,7 @@ This is an Ansible-based installer for Docker Engine (formerly known as
 Docker CE) on various Linux Platforms. It has been tested on:
 
 - Debian 10 + 11
-- Rocky Linux 8
+- Rocky Linux 8 + 9, CentOS Stream 9
 - openSUSE Leap 15
 - Ubuntu 20.04
 
