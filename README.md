@@ -29,7 +29,7 @@ Then start the `installer.yml` with root permissions; e.g.:
 sudo ./installer.yml
 ```
 
-> :exclamation: This requires your `ansible-playbook`-command to be installed
+> :warning: This requires your `ansible-playbook`-command to be installed
 in `/usr/bin`. If you get an error here, please fix the first line ("shebang")
 in `installer.yml`. (Use `type ansible-playbook` to see your installation path.)
 
