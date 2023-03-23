@@ -10,6 +10,7 @@
       - apt-transport-https
       - ca-certificates
       - gnupg2
+      - apparmor # seems to be a requirement in v23.x
 
 - name: Import Dockers official GPG key
   apt_key:
