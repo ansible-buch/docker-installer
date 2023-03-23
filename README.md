@@ -29,6 +29,11 @@ Then start the `installer.yml` with root permissions; e.g.:
 sudo ./installer.yml
 ```
 
+> :exclamation: This requires your `ansible-playbook`-command to be installed
+in `/usr/bin`. If you get an error here, please fix the first line ("shebang")
+in `installer.yml`. (Use `type ansible-playbook` to see your installation path.)
+
+
 If you want to put a non-root user into the `docker` group, just add
 `-e docker_user=USERNAME`, e.g.;
 
