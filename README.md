@@ -3,7 +3,7 @@
 This is an Ansible-based installer for Docker Engine (formerly known as
 Docker CE) on various Linux Platforms. It has been tested on:
 
-- Debian 10 + 11
+- Debian 10, 11, 12
 - Rocky Linux 8 + 9, CentOS Stream 9
 - openSUSE Leap 15
 - Ubuntu 20.04 + 22.04
@@ -44,5 +44,3 @@ sudo ./installer.yml -e docker_user=vagrant
 After a while, you will have Docker and these additional tools installed:
 - [`docker-compose`](https://github.com/docker/compose)
 - [`ctop`](https://github.com/bcicen/ctop)
-- [`reg`](https://github.com/genuinetools/reg)
-
