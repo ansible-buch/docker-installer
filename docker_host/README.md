@@ -13,8 +13,7 @@ Available variables are listed below, along with default values:
     docker_user: # no default
 
     docker_compose_version: 1.29.2
-    docker_ctop_version: 0.7.6
-    docker_reg_version: 0.16.1
+    docker_ctop_version: 0.7.7
 
     docker_sdk: true
 
@@ -34,4 +33,3 @@ If you specify an account with `docker_user`, it will be put into the
 Additionally, the following tools will be installed directly from GitHub:
 - docker-compose
 - ctop
-- reg

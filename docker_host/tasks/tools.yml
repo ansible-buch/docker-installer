@@ -33,13 +33,3 @@
     dest: /usr/local/bin/ctop
     mode: 0755
     force: yes
-
-
-- name: Install reg
-  get_url:
-    url: "https://github.com\
-          /genuinetools/reg/releases/download/v{{docker_reg_version}}\
-          /reg-linux-amd64"
-    dest: /usr/local/bin/reg
-    mode: 0755
-    force: yes
