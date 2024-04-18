@@ -41,3 +41,7 @@ sudo ansible-playbook install.yml -e docker_user=vagrant
 After a while, you will have Docker and some additional software installed:
 - [`ctop`](https://github.com/bcicen/ctop)
 - ...
+
+
+> :warning: We no longer install the old `docker-compose` program,
+> but use the newer Docker Compose plugin.
