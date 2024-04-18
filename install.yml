@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+  force_handlers: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  pre_tasks:
+    - set_fact:
+        eff_uid_number: "{{ lookup('pipe', 'id -u') }}"
+
+    - block:
+      - debug:
+          msg: "This program requires root privileges"
+      - meta: end_play
+      when: eff_uid_number|int != 0
+
+
+  roles:
+    - role: docker_host
