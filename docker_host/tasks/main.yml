@@ -1,6 +1,11 @@
 ---
+- set_fact:
+    distname: "{{ ansible_distribution| lower| replace(' ', '_') }}"
+
+- debug: msg="Using '{{distname}}' as internal distribution name."
+
 - name: System-specific installation of docker-ce
-  include_tasks: "setup-{{ansible_distribution |replace(' ', '_')}}.yml"
+  include_tasks: "setup-{{distname}}.yml"
 
 - name: Start and enable docker service
   service:

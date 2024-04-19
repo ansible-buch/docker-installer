@@ -1,6 +1,6 @@
 ---
 - name: Update apt cache
-  apt: 
+  apt:
     update_cache: yes
     cache_valid_time: 3600
 
@@ -13,18 +13,20 @@
 
 - name: Import Dockers official GPG key
   get_url:
-    url: https://download.docker.com/linux/{{ansible_distribution|lower}}/gpg
+    url: https://download.docker.com/linux/{{distname}}/gpg
     dest: /etc/apt/keyrings/docker-archive-keyring.asc
-    
+
 - name: Add docker apt repo
   apt_repository:
     repo: >-
       deb [signed-by=/etc/apt/keyrings/docker-archive-keyring.asc]
-      https://download.docker.com/linux/{{ansible_distribution|lower}}
+      https://download.docker.com/linux/{{distname}}
       {{ansible_lsb.codename}} stable
     filename: docker-ce
     state: present
 
-- name: Install docker-ce
+- name: Install Docker Engine and Compose plugin
   apt:
-    name: docker-ce
+    name:
+      - docker-ce
+      - docker-compose-plugin

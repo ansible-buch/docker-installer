@@ -1,4 +1,6 @@
 ---
-- name: Install docker-ce (from openSUSE repo)
+- name: Install Docker Engine and Compose plugin from openSUSE repo
   zypper:
-    name: docker
+    name:
+      - docker
+      - docker-compose
