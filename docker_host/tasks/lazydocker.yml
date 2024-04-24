@@ -1,0 +1,33 @@
+---
+- name: Download installer script
+  get_url:
+    url: https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh
+    dest: /tmp/lazydocker_install_update_linux.sh
+    force: true
+  register: get_url_task
+
+
+- name: Execute installer script; install to /usr/local/bin
+  command: bash {{get_url_task.dest}}
+  environment:
+    DIR: /usr/local/bin
+  when: get_url_task.changed
+
+- set_fact:
+    lazydocker_user: >-
+      {% if docker_user is defined %}{{docker_user}}{% else %}root{% endif %}
+
+- set_fact:
+    lazydocker_config_dir: "~{{lazydocker_user}}/.config/lazydocker"
+      
+- name: Create lazydocker config dir {{lazydocker_config_dir}}
+  file:
+    path: "{{lazydocker_config_dir}}"
+    owner: "{{lazydocker_user}}"
+    state: directory
+
+- name: Create lazydocker config there
+  copy:
+    src: lazydocker-config.yml
+    dest: "{{lazydocker_config_dir}}/config.yml"
+    owner: "{{lazydocker_user}}"

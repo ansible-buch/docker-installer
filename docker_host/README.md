@@ -12,8 +12,6 @@ Available variables are listed below, along with default values:
 
     docker_user: # no default
 
-    docker_ctop_version: 0.7.7
-
 ## Description
 
 This role installs Docker Engine (formerly known as Docker CE)
@@ -28,4 +26,5 @@ The installation comes with a `daemon.json` where two features are enabled:
 If you specify an account with `docker_user`, it will be put into the
 `docker` group, and therefore gets the permission to use Docker.
 
-Additionally, the `ctop` tool will be installed directly from GitHub.
+Additionally, the latest version of `lazydocker` will be installed directly
+from GitHub.

@@ -39,4 +39,4 @@ sudo ansible-playbook install.yml -e docker_user=vagrant
 ```
 
 After a while, you will have Docker, the Docker Compose plugin,
-and the terminal UI [`ctop`](https://github.com/bcicen/ctop) installed.
+and the terminal UI [`lazydocker`](https://github.com/jesseduffield/lazydocker) installed.

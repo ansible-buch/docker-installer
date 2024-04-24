@@ -36,14 +36,7 @@
     name: bash-completion
 
 
-- name: Install ctop
-  get_url:
-    url: "https://github.com\
-          /bcicen/ctop/releases/download/v{{docker_ctop_version}}\
-          /ctop-{{docker_ctop_version}}-linux-amd64"
-    dest: /usr/local/bin/ctop
-    mode: 0755
-    force: yes
+- include_tasks: "lazydocker.yml"
 
 
 - debug: msg="No Python SDK modules were installed."

@@ -1,0 +1,16 @@
+---
+# https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md
+
+gui:
+  language: en
+  theme:
+    selectedLineBgColor:
+      - cyan
+
+logs:
+  timestamps: false  # pretty much what you would get with docker logs
+  since: ''          # to show all log lines no matter how old
+  tail: '200'        # show last 200 lines of logs
+
+commandTemplates:
+  dockerCompose: docker compose
