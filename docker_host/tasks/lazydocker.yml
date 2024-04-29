@@ -6,6 +6,9 @@
     force: true
   register: get_url_task
 
+- name: Install curl (needed in the installer script)
+  package:
+    name: curl
 
 - name: Execute installer script; install to /usr/local/bin
   command: bash {{get_url_task.dest}}
