@@ -29,7 +29,7 @@
     owner: "{{lazydocker_user}}"
     state: directory
 
-- name: Create lazydocker config there
+- name: Create lazydocker config {{lazydocker_config_dir}}/config.yml
   copy:
     src: lazydocker-config.yml
     dest: "{{lazydocker_config_dir}}/config.yml"
