@@ -16,21 +16,12 @@
     DIR: /usr/local/bin
   when: get_url_task.changed
 
-- set_fact:
-    lazydocker_user: >-
-      {% if docker_user is defined %}{{docker_user}}{% else %}root{% endif %}
 
-- set_fact:
-    lazydocker_config_dir: "~{{lazydocker_user}}/.config/lazydocker"
-      
-- name: Create lazydocker config dir {{lazydocker_config_dir}}
-  file:
-    path: "{{lazydocker_config_dir}}"
-    owner: "{{lazydocker_user}}"
-    state: directory
+- include_tasks: lazydocker-create-config.yml
+  vars:
+    user: root
 
-- name: Create lazydocker config {{lazydocker_config_dir}}/config.yml
-  copy:
-    src: lazydocker-config.yml
-    dest: "{{lazydocker_config_dir}}/config.yml"
-    owner: "{{lazydocker_user}}"
+- include_tasks: lazydocker-create-config.yml
+  vars:
+    user: "{{docker_user}}"
+  when: docker_user is defined

@@ -1,0 +1,15 @@
+
+- set_fact:
+    lazydocker_config_dir: "~{{user}}/.config/lazydocker"
+      
+- name: Create lazydocker config dir {{lazydocker_config_dir}}
+  file:
+    path: "{{lazydocker_config_dir}}"
+    owner: "{{user}}"
+    state: directory
+
+- name: Create lazydocker config {{lazydocker_config_dir}}/config.yml
+  copy:
+    src: lazydocker-config.yml
+    dest: "{{lazydocker_config_dir}}/config.yml"
+    owner: "{{user}}"
